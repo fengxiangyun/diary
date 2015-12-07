@@ -25,7 +25,7 @@ class IndexAction extends BaseAction{
         $this->display();
     }
     
-   
+
 
     
 }

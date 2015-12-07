@@ -12,11 +12,11 @@ function turn() {
   <table class="footer_nav">
     <tbody>
     <tr>
-      <td><a href="<?php echo UrlNamespace::categoryUrl(10);?>">网络日志</a></td>
-      <td><a href="<?php echo UrlNamespace::categoryUrl(20);?>">日记本</a></td>
-      <td><a href="<?php echo UrlNamespace::categoryUrl(300);?>">小说</a></td>
-      <td><a href="<?php echo UrlNamespace::categoryUrl(21);?>">散文</a></td>
-      <td><a href="<?php echo UrlNamespace::categoryUrl(25);?>">经典句子</a></td>
+      <td><a href="">网络日志</a></td>
+      <td><a href="">日记本</a></td>
+      <td><a href="">小说</a></td>
+      <td><a href="">散文</a></td>
+      <td><a href="">经典句子</a></td>
     </tr>
     </tbody>
   </table>
