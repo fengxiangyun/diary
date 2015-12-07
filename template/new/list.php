@@ -2,7 +2,7 @@
 <!-- 图片 -->
 <?php $this->load('Public/image/up.php', array('image' => $this->result['top_image']));?>
 <div class="mod_nav1">
-  <h2><a href="<?php echo UrlNamespace::hotArticleUrl($this->majory['id']);?>">最热文章</a></h2>
+  <h2><a href="<?php echo UrlNamespace::hotArticleUrl();?>">最热文章</a></h2>
 </div>
 <?php $this->load('Public/title/up.php', array('topic' => $this->result['topic']));?>
 <!-- 图片 -->

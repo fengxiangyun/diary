@@ -1,12 +1,5 @@
-<?php 
-$limit = isset($limit) ? $limit : 1000;
-$type = CategoryNamespace::getAllCategory(false, $this->category['id']);
-$len = 1;
-foreach ($type as $value) {?>
-  <li <?php if (isset($class)) {?>class="<?php echo $class;?>"<?php }?>><a <?php if (isset($this->category) && $this->category['id'] == $value['id']){?>style="background-color: #496D94;"<?php }?> href="<?php if (isset($value['url'])){ echo $value['url'];}else {echo UrlNamespace::categoryUrl($value['id']);}?>"><?php echo $value['name'];?></a></li>
-<?php
-    if ($len >= $limit) {
-        break;
-    }
-    $len++;
-}?>
+<li><a href="/diary/index.php/new/">最新</a></li>
+<li><a href="/diary/index.php/tuijian/">推荐</a></li>
+<li><a href="/diary/index.php/hot/">最热</a></li>
+<li><a href="/diary/index.php/add/">写日记</a></li>
+<li><a href="/diary/index.php/user/">我的</a></li>

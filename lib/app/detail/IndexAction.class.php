@@ -18,15 +18,12 @@ class IndexAction extends DetailBaseAction{
     }
     public function defaultAction() {
         
-        if (empty(self::$CATEGORY) || empty(self::$PUID)) {
+        if (empty(self::$PUID)) {
             $this->_error();
         }
         
-        self::$ARTICLE = DetailNamespace::getArticle(self::$CATEGORY, self::$PUID);
-        if (self::$CATEGORY['id'] == 400) {
-            
-            $this->showImage();
-        }
+        self::$ARTICLE = DetailNamespace::getArticle(self::$PUID);
+
         
         if (empty(self::$ARTICLE)) {
             $this->_error();
@@ -44,7 +41,7 @@ class IndexAction extends DetailBaseAction{
         //评论
         $result['comment'] = DetailNamespace::getComment(self::$CATEGORY, self::$PUID);
         //增加阅读次数
-        DetailNamespace::increaseReadTimes(self::$CATEGORY, self::$PUID);
+        DetailNamespace::increaseReadTimes(self::$PUID);
         //顶部ad
         $result['ad_top']= $this->_getAdTop();
         //上面 下面 右侧的image
@@ -71,43 +68,29 @@ class IndexAction extends DetailBaseAction{
      * @brief 0 上一篇 ，1下一篇
      */
     private function _getNearArticle() {
-        return DetailNamespace::getNearArticle(self::$CATEGORY, self::$PUID);
+        return DetailNamespace::getNearArticle(self::$PUID);
     }
     private function _getImageTop() {
         return null;
     }
     private function _getAdTop() {
         return array(
-            0 => array(
-                'title' => 'xapian的安装',
-                'url'   => '/diary/index.php/detail/?majory=1002&puid=162109',
-            ),
         );
     }
     
-    public function showImage() {
-        $result['image'] = true;
-        $result['bread'] = $this->_setBread();
-        $result['near'] = DetailNamespace::getNearImage(self::$ARTICLE);
-        $result['title'] = self::$ARTICLE['title'];
-        $result['article'] = self::$ARTICLE;
-        $this->assign($result);
-        $this->display('detail/image.php');exit;
-    }
+
     
     /**
      * @brief 相关文章
      */
     private function _getRelatedArticle() {
         //日记的话 推荐相关日记本
-        return DetailNamespace::getRelateArticle(self::$CATEGORY, self::$ARTICLE);
+        return DetailNamespace::getRelateArticle(self::$ARTICLE);
     }
     private function _setBread() {
-        DetailBread::set(self::$CATEGORY['name'], __APP__.'/category/?category=' . self::$CATEGORY['id']);
+
         DetailBread::set(self::$ARTICLE['majory'], __APP__.'/majory/?majory=' . self::$ARTICLE['majory_id']);
-        if (self::$CATEGORY['id'] == 400) {
-            DetailBread::set(self::$ARTICLE['name'], __APP__.'/majory/?majory=' . self::$ARTICLE['majory_id'] . '&name='.self::$ARTICLE['name_id']);
-        }
+
         DetailBread::set(self::$ARTICLE['title']);
         return DetailBread::getHtml();
     }

@@ -6,15 +6,8 @@ class UrlNamespace{
      * @param $majory
      * @param $puid
      */
-    public static function detailUrl($majory, $puid) {
-        return __APP__ . '/detail/?majory=' . $majory . '&puid=' . $puid; 
-    }
-    
-    /**
-     * @brief 大类
-     */
-    public static function categoryUrl($category) {
-        return __APP__ . '/category/?category=' . $category;
+    public static function detailUrl($puid) {
+        return __APP__ . '/detail/?puid=' . $puid;
     }
     
     /**
@@ -25,8 +18,8 @@ class UrlNamespace{
         return __APP__ . '/majory/?majory=' . $majory;
     }
     
-    public static function hotArticleUrl($category, $majory) {
-        $url = __APP__ . '/hot/?category=' . $category;
+    public static function hotArticleUrl($majory = '') {
+        $url = __APP__ . '/hot/';
         if ($majory) {
             $url = __APP__ . '/hot/?majory=' . $majory;
         }
@@ -55,38 +48,5 @@ class UrlNamespace{
     
     public static function searchUrl($word, $type) {
         return __APP__ . '/search/?kw=' . $word .'&type='.$type;
-    }
-    
-    public static function creatHospitalUrl($disease='',$province ='', $city='', $district='', $street='',$level=0, $keyword='', $page = '') {
-        $url = __APP__ .  '/medical/hospital/?';
-        if ($disease) {
-            $url .= 'disease=' . $disease;
-        }
-        if ($province) {
-            $url .= '&province=' . $province;
-        }
-        if ($city) {
-            $url .= '&city=' . $city;
-        }
-        if ($district) {
-            $url .= '&district=' . $district;
-        }
-        if ($street) {
-            $url .= '&street=' . $street;
-        }
-        if ($level) {
-            $url .= '&level=' . $level;
-        }
-        if ($keyword) {
-            $url .= '&keyword=' . $keyword;
-        }
-        if($page) {
-            $url .= '&p=' . $page;
-        }
-        return $url;
-    }
-    
-    public static function hospitalDetail($id) {
-        return  __APP__ . '/medical/hosdetail/?id=' . $id;;
     }
 }
