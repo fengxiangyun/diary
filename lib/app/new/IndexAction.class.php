@@ -1,7 +1,7 @@
 <?php
 require_once APP . '/common/CommonAction.class.php';
 require_once THINKPHP . '/app/common/CommonNamespace.class.php';
-require_once THINKPHP . '/lib/db/DBXapian.class.php';
+
 require_once THINKPHP . '/app/detail/DetailNamespace.class.php';
 
 class IndexAction extends CommonAction{
