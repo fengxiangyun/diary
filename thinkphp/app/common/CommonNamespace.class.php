@@ -56,9 +56,6 @@ class CommonNamespace extends BaseNamespace{
      * @param int $limit
      */
     public static function getNewArticle($majoryId, $limit = 10, $offset = 0) {
-        if (empty($categoryId)) {
-            HttpNamespace::redirect(__APP__);
-        }
         $limit = ($limit < 51) ? $limit : 50;
         $key = 'new_' . $majoryId;
         //list时间默认5分钟;
