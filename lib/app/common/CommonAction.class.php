@@ -23,8 +23,8 @@ class CommonAction extends BaseAction {
         return CommonNamespace::getNewArticle($majory, $limit, $offset);
     }
     
-    public function getHotArticle($majory, $limit, $offset = 0) {
-        return CommonNamespace::getHotArticle( $majory, $limit, $offset);
+    public function getHotArticle($majory, $limit) {
+        return CommonNamespace::getHotArticle( $majory, $limit);
     }
     
     public static function getErrorCode() {
