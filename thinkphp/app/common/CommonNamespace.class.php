@@ -24,9 +24,6 @@ class CommonNamespace extends BaseNamespace{
      * @param int $limit 
      */
     public static function getHotArticle($majoryId, $limit = 10) {
-        if (empty($categoryId)) {
-            HttpNamespace::redirect(__APP__);
-        }
         $limit = ($limit < 51) ? $limit : 60;
         $key = 'hot_' . $majoryId;
         //list时间默认10分钟;
